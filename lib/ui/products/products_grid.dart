@@ -1,4 +1,6 @@
+import 'package:app_nshopping/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'product_grid_tile.dart';
 import 'products_manager.dart';
 
@@ -8,11 +10,12 @@ class ProductsGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productsManager = ProductsManager();
-    final product = productsManager.items;
+    final products = context.select<ProductsManager, List<Product>>(
+        (productsManager) => showFavorites ? [] : productsManager.items);
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
-      itemCount: product.length,
-      itemBuilder: (ctx, i) => ProductGridTile(product[i]),
+      itemCount: products.length,
+      itemBuilder: (ctx, i) => ProductGridTile(products[i]),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           childAspectRatio: 3 / 2,

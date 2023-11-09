@@ -21,19 +21,29 @@ class _OrderItemCard extends State<OrderItemCard> {
       child: Column(
         children: <Widget>[
           buildOrderSummary(),
-          if (_expanded) buildOrderDetails()
+          if (_expanded)
+            Container(
+              child: Column(
+                children: [
+                  Text(
+                    "Chi Tiết đơn hàng",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 20, color: Color.fromARGB(222, 71, 36, 13)),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  buildOrderDetails()
+                ],
+              ),
+            )
         ],
       ),
     );
   }
 
   Widget buildOrderDetails() {
-    // print("lannnnn1111");
-    // widget.order.listItem.map(
-    //   (product) {
-    //     print(product);
-    //   },
-    // );
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
       height: 270,
@@ -101,31 +111,6 @@ class _OrderItemCard extends State<OrderItemCard> {
               .toList()),
     );
   }
-
-// Text(
-//         '${widget.order.total_money_order}vnd',
-//         style: TextStyle(
-//           color: Colors.red,
-//           fontWeight: FontWeight.w600,
-//           fontSize: 20,
-//         ),
-
-// Text(
-//         widget.order.date_order,
-//         style: TextStyle(
-//           color: Colors.black87,
-//           fontSize: 17,
-//         ),
-//       ),
-
-// IconButton(
-//         icon: Icon(_expanded ? Icons.expand_less : Icons.expand_more),
-//         onPressed: () {
-//           setState(() {
-//             _expanded = !_expanded;
-//           });
-//         },
-//       ),
 
   Widget buildOrderSummary() {
     return Container(
@@ -237,3 +222,4 @@ class _OrderItemCard extends State<OrderItemCard> {
     );
   }
 }
+
