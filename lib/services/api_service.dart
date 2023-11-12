@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:app_nshopping/config.dart';
+import 'package:app_nshopping/models/auth_token.dart';
 import 'package:app_nshopping/models/product.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,14 +21,6 @@ class APIservice {
       var response = await client.get(url, headers: requestHearders);
       if (response.statusCode == 200) {
         final productsMap = json.decode(response.body) as List<dynamic>;
-        // print(productsMap[1]);
-
-        // print(productsMap[1].id_product);
-        // print(productsMap[1].name_product);
-
-        // print(productsMap[1].price_product);
-
-        // print(productsMap[1].picture_product);
 
         productsMap.forEach(
           (product) {
@@ -49,6 +43,29 @@ class APIservice {
     } catch (error) {
       print(error);
       return products;
+    }
+  }
+
+  static Future<AuthToken?> checkLogin(email, password) async {
+    // print("adasdasd");
+    final Map<dynamic, dynamic> authToken = {};
+
+    try {
+      Map<String, String> requestHearders = {
+        'Content-Type': 'application/json'
+      };
+      var url = Uri.http(Config.apiURL, Config.apiLoginURL);
+      var response = await client
+          .post(url, headers: requestHearders, body: {email, password});
+      if (response.statusCode == 200) {
+        final auth = json.decode(response.body) as Map<dynamic,dynamic>;
+        print(auth);
+        
+        return null;
+      }
+    } catch (error) {
+      print(error);
+      return null;
     }
   }
 }

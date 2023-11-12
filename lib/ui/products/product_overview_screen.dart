@@ -20,8 +20,8 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   void initState() {
     super.initState();
     _fetchProducts = context.read<ProductsManager>().fetchProducts();
-    print("adadasdasdaasd");
-    print(_fetchProducts);
+    // print("adadasdasdaasd");
+    // print(_fetchProducts);
   }
 
   @override

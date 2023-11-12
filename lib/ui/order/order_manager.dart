@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
+
 import '../../models/order.dart';
 
-class OrdersManager {
+class OrdersManager with ChangeNotifier {
   final List<Order> _items = [
     Order(
       id_order: "o1",
