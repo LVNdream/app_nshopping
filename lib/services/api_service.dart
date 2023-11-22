@@ -94,7 +94,7 @@ class APIservice {
             //     order["listItem"] as List<Map<dynamic, dynamic>>;
             // print(order);
 
-            print(order["listItem"]);
+            // print(order["listItem"]);
 
             allorders.add(
               Order.fromJson(
@@ -113,7 +113,7 @@ class APIservice {
             );
           },
         );
-        print("allorders");
+        // print("allorders");
 
         print(allorders);
         return allorders;

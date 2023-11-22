@@ -14,9 +14,9 @@ class HttpException implements Exception {
         return 'This is not a valid email address';
       case 'WEAK_PASSWORD':
         return 'This password is too weak';
-      case 'EMAIL_NOT_FOUND':
+      case 'không tìm thấy tài khoản':
         return 'Could not find a user with that email';
-      case 'INVALID_PASSWORD':
+      case 'Bạn đã nhập sai mật khẩu':
         return 'Invalid password';
       default:
         return code;

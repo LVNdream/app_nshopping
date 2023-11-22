@@ -2,6 +2,7 @@ import 'dart:math';
 
 // import 'package:delivery_fastfood_app/shared/app_drawer.dart';
 import 'package:app_nshopping/models/auth_token.dart';
+import 'package:app_nshopping/models/order.dart';
 import 'package:app_nshopping/ui/auth/auth_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,7 +35,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     print(_fetchOrders);
     print('building orders!!');
-    final ordersManager = OrdersManager();
+    final orders = context.select<OrdersManager, List<Order>>(
+        (ordersManager) => ordersManager.orders);
+
+    // final products = context.select<ProductsManager, List<Product>>(
+    //     (productsManager) => showFavorites ? [] : productsManager.items);
 
     print(widget.email);
     // final authManager = AuthManager();
@@ -63,7 +68,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
       body: FutureBuilder(
         future: _fetchOrders,
         builder: (context, snapshot) {
-          return ordersManager.orderCount == 0
+          return orders.length == 0
               ? Container(
                   padding: EdgeInsets.all(20),
                   child: Text(
@@ -72,9 +77,9 @@ class _OrdersScreenState extends State<OrdersScreen> {
                   ),
                 )
               : ListView.builder(
-                  itemCount: ordersManager.orderCount,
+                  itemCount: orders.length,
                   itemBuilder: (ctx, i) => OrderItemCard(
-                    ordersManager.orders[i],
+                    orders[i],
                   ),
                 );
         },

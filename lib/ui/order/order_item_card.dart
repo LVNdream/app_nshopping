@@ -222,4 +222,3 @@ class _OrderItemCard extends State<OrderItemCard> {
     );
   }
 }
-
