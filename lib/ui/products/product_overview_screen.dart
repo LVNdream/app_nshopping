@@ -27,16 +27,18 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Nshopping'),
-          actions: <Widget>[buildProductFilterMenu(), buildShoppingCartIcon()],
-        ),
-        drawer: const AppDrawer(),
-        body: FutureBuilder(
-            future: _fetchProducts,
-            builder: (context, snapshot) {
-              return ProductsGrid(false);
-            }));
+      appBar: AppBar(
+        title: const Text('Nshopping'),
+        actions: <Widget>[buildProductFilterMenu(), buildShoppingCartIcon()],
+      ),
+      drawer: const AppDrawer(),
+      body: FutureBuilder(
+        future: _fetchProducts,
+        builder: (context, snapshot) {
+          return ProductsGrid(false);
+        },
+      ),
+    );
   }
 
   Widget buildShoppingCartIcon() {

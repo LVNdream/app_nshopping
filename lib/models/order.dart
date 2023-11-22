@@ -7,7 +7,7 @@ class Order {
   final String status_order;
   final String total_money_order;
   final String phone;
-  final List<Map<dynamic,dynamic>> listItem;
+  final List<dynamic> listItem;
   Order({
     required this.id_order,
     required this.full_name,
@@ -30,6 +30,20 @@ class Order {
       total_money_order: total_money_order ?? this.total_money_order,
       phone: phone ?? this.phone,
       listItem: listItem ?? this.listItem,
+    );
+  }
+
+  static Order fromJson(Map<String, dynamic> json) {
+    return Order(
+      id_order: json['id_order'],
+      full_name: json['full_name'],
+      date_order: json['date_order'],
+      address: json['address'],
+      recvie: json['recvie'],
+      status_order: json['status_order'],
+      total_money_order: json['total_money_order'],
+      phone: json['phone'],
+      listItem: json['listItem'],
     );
   }
 }
