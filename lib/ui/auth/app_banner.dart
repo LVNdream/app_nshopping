@@ -15,10 +15,10 @@ class AppBanner extends StatelessWidget {
         vertical: 8.0,
         horizontal: 94.0,
       ),
-      transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
+      // transform: Matrix4.rotationZ(-8 * pi / 180)..translate(-10.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.deepOrange.shade900,
+        color: Color.fromARGB(255, 218, 169, 116),
         boxShadow: const [
           BoxShadow(
             blurRadius: 8,
@@ -28,9 +28,9 @@ class AppBanner extends StatelessWidget {
         ],
       ),
       child: Text(
-        'MyShop',
+        'NShop',
         style: TextStyle(
-          color: Theme.of(context).textTheme.titleLarge?.color,
+          color: Color.fromARGB(255, 255, 255, 255),
           fontSize: 50,
           fontFamily: 'Anton',
           fontWeight: FontWeight.normal,
